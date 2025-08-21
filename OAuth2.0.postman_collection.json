@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "ad65971b-fbb2-4f3c-aa66-d64f4b9a1ee6",
+		"name": "OAuth2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30445866"
+	},
+	"item": [
+		{
+			"name": "Register Client",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "applicationType",
+						"value": "AuthorizationServer",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Vedant\",\r\n\"password\":\"12345\",\r\n\"address\":\"raipur\",\r\n\"contact\":\"7415195275\",\r\n\"emailid\":\"vedantsahu2019@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				},
+				"description": "To register a client by submitting all the details"
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Access Token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "applicationType",
+						"value": "AuthorizationServer",
+						"type": "default"
+					},
+					{
+						"key": "clientid",
+						"value": "502470806598446",
+						"type": "default"
+					},
+					{
+						"key": "clientsecret",
+						"value": "hFTjF7TlHtXdvZ3l1dP7e8EluxFFrZrV",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"token"
+					]
+				},
+				"description": "To generate access token by submitting client id and client secret"
+			},
+			"response": []
+		},
+		{
+			"name": "Access Secured Resource",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cvZuTj7I7yZ3Cb9zPv6vQXm83O5c1T294N2EatuxifG6Gz8ZpPzOl6jk0DWCEXDVIwyK9Zb0E3HWyEwxkP7WIZOyoIIZfsg75vjtbK13oWIXGNL0RcnKrg9JmR2aUB4WxiSKyFQQogjvESjJBpXxZHPdYjFHb9E0VEw72zxfpHVi7n4Gyrsp4qZEr46xRlfMMuxh9gbEPnUiX2p7qzml9VXbRmJu3RcpS7YgiSZj9VIfXkkf4lDtLVg1QocvhOi",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "applicationType",
+						"value": "ResourceServer",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/resource",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"resource"
+					]
+				},
+				"description": "To access secured resource via access token"
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate and Authorize Client",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "applicationType",
+						"value": "AuthorizationServer",
+						"type": "default"
+					},
+					{
+						"key": "name",
+						"value": "Vedant",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "12345",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/auth",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"auth"
+					]
+				},
+				"description": "To check whether the client is authentic and authorized"
+			},
+			"response": []
+		}
+	]
+}
